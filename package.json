@@ -1,41 +1,45 @@
 {
-	"name": "project-v-back-end",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "tsnd --clear --respawn src/server.ts"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Guilherme-GFC/project-v-back-end.git"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/Guilherme-GFC/project-v-back-end/issues"
-	},
-	"homepage": "https://github.com/Guilherme-GFC/project-v-back-end#readme",
-	"devDependencies": {
-		"@types/cors": "^2.8.19",
-		"@types/express": "^5.0.3",
-		"@types/jsonwebtoken": "^9.0.10",
-		"@types/node": "^24.5.1",
-		"ts-node-dev": "^2.0.0",
-		"typescript": "^5.9.2"
-	},
-	"dependencies": {
-		"bcryptjs": "^3.0.2",
-		"cors": "^2.8.5",
-		"dotenv": "^17.2.3",
-		"express": "4.16.2",
-		"express-async-errors": "^3.1.1",
-		"jsonwebtoken": "^9.0.2",
-		"reflect-metadata": "^0.2.2",
-		"typeorm": "^0.3.27",
-		"uuid": "^13.0.0",
-		"zod": "^4.1.8"
-	}
+   "name": "project-v-back-end",
+   "version": "1.0.0",
+   "description": "",
+   "main": "index.js",
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "dev": "tsnd --clear --respawn src/server.ts",
+      "start": "ts-node src/index.ts",
+      "typeorm": "typeorm-ts-node-commonjs"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/Guilherme-GFC/project-v-back-end.git"
+   },
+   "keywords": [],
+   "author": "",
+   "license": "ISC",
+   "bugs": {
+      "url": "https://github.com/Guilherme-GFC/project-v-back-end/issues"
+   },
+   "homepage": "https://github.com/Guilherme-GFC/project-v-back-end#readme",
+   "devDependencies": {
+      "@types/node": "^24.5.1",
+      "ts-node": "^10.9.2",
+      "typescript": "^5.9.2",
+      "@types/cors": "^2.8.19",
+      "@types/express": "^5.0.3",
+      "@types/jsonwebtoken": "^9.0.10",
+      "ts-node-dev": "^2.0.0"
+   },
+   "dependencies": {
+      "bcryptjs": "^3.0.2",
+      "cors": "^2.8.5",
+      "dotenv": "^17.2.3",
+      "express": "4.16.2",
+      "express-async-errors": "^3.1.1",
+      "jsonwebtoken": "^9.0.2",
+      "reflect-metadata": "^0.2.2",
+      "typeorm": "0.3.27",
+      "uuid": "^13.0.0",
+      "zod": "^4.1.8",
+      "pg": "^8.14.1"
+   }
 }
