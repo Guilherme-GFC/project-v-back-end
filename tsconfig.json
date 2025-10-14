@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		"target": "es2016",
 		"module": "commonjs",
-		"typeRoots": ["node_modules/@types"],
+		"typeRoots": ["src/@types", "node_modules/@types"],
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
@@ -10,5 +10,7 @@
 		"skipLibCheck": true
 	},
 	"include": ["src/**/*"],
-	"exclude": ["node_modules"]
+	"exclude": ["node_modules"],
+	"emitDecoratorMetadata": true,
+	"experimentalDecorators": true
 }
