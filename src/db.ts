@@ -1,6 +1,6 @@
 import { INotification } from "./interfaces/notifications.interface";
 import { IOpportunitie } from "./interfaces/opportunities.interface";
-import { IUserData, TUser, TUserReturn } from "./interfaces/users.interface";
+import { TUser } from "./interfaces/users.interface";
 
 const userDb = [] as TUser[];
 const opportunitiesDb = [] as IOpportunitie[];

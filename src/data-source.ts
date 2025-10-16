@@ -1,17 +1,31 @@
-import "reflect-metadata"
-import { DataSource } from "typeorm"
-import { User } from "./entity/User"
+import { DataSource, DataSourceOptions } from "typeorm";
+import path from "path";
+import "dotenv/config";
 
-export const AppDataSource = new DataSource({
-    type: "postgres",
-    host: "localhost",
-    port: 5432,
-    username: "test",
-    password: "test",
-    database: "test",
-    synchronize: true,
-    logging: false,
-    entities: [User],
-    migrations: [],
-    subscribers: [],
-})
+const dataSourceConfig = (): DataSourceOptions => {
+	const nodeEnv = process.env.NODE_ENV;
+	const migrationsPath = path.join(__dirname, "./migrations/**.{js,ts}");
+	const entitiesPath = path.join(__dirname, "./entities");
+
+	if (nodeEnv == "test") {
+		return {
+			type: "sqlite",
+			database: ":memory:",
+			synchronize: true,
+			entities: [entitiesPath],
+		};
+	}
+
+	return {
+		type: "postgres",
+		url: process.env.DATABASE_URL!,
+		logging: true,
+		synchronize: false,
+		entities: [entitiesPath],
+		migrations: [migrationsPath],
+	};
+};
+
+const AppDataSource = new DataSource(dataSourceConfig());
+
+export default AppDataSource;

@@ -1,5 +1,6 @@
-import express from "express";
+import "reflect-metadata";
 import "express-async-errors";
+import express, { Application } from "express";
 import {
 	usersRoutes,
 	checkInsRoutes,
@@ -9,7 +10,7 @@ import {
 } from "./routers";
 import handleError from "./errors/handleErrors";
 
-const app = express();
+const app: Application = express();
 app.use(express.json());
 
 app.get("", (req, res) => {
