@@ -20,6 +20,6 @@ export class Opportunitie {
 	@Column({ type: "date" })
 	deadline!: string;
 
-	@Column({ type: "array", nullable: true })
-	expectations!: string[];
+	@Column({ nullable: true })
+	expectations!: string;
 }

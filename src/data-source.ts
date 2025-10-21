@@ -5,7 +5,7 @@ import "dotenv/config";
 const dataSourceConfig = (): DataSourceOptions => {
 	const nodeEnv = process.env.NODE_ENV;
 	const migrationsPath = path.join(__dirname, "./migrations/**.{js,ts}");
-	const entitiesPath = path.join(__dirname, "./entities");
+	const entitiesPath = path.join(__dirname, "./entities/**.{js,ts}");
 
 	if (nodeEnv == "test") {
 		return {
