@@ -12,11 +12,11 @@ export class CheckIn {
 	@PrimaryGeneratedColumn("uuid")
 	id!: string;
 
-	@Column({ type: "date" })
-	startTime!: string;
+	@Column({ type: "timestamp" })
+	startTime!: Date;
 
-	@Column({ type: "date" })
-	endTime!: string;
+	@Column({ type: "timestamp" })
+	endTime!: Date;
 
 	@Column()
 	description!: string;

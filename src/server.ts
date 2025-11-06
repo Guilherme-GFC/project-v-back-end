@@ -2,14 +2,16 @@ import app from "./app";
 import AppDataSource from "./data-source";
 import "dotenv/config";
 
-console.log("Connectando ao db");
-async () => {
-	await AppDataSource.initialize().catch((err) => {
-		console.log("Error during initialization database", err);
-	});
-	console.log("Database conected!");
-	const PORT = process.env.PORT ?? 3001;
-	app.listen(PORT, () => {
-		console.log(`Listening at http://localhost:${PORT}`);
-	});
-};
+async function initialize() {
+	try {
+		await AppDataSource.initialize();
+		console.log("Database conected!");
+		app.listen(3001, () => {
+			console.log(`Listening at http://localhost:3001`);
+		});
+	} catch (error) {
+		console.log("Error during initialization database", error);
+	}
+}
+
+initialize();

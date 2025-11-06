@@ -6,27 +6,27 @@ import {
 } from "../../interfaces/checkIns.interface";
 import { AppError } from "../../errors/AppErrors";
 import { checkInReturnSchema } from "../../schemas/checkins.schema";
+import AppDataSource from "../../data-source";
+import { CheckIn, User } from "../../entities";
 
-export default function CreateCheckInService(
+export default async function CreateCheckInService(
 	userId: string,
 	checkInData: TCheckInCreate
 ) {
-	const user = userDb.find((user) => user.id === userId);
-	if (!user) {
+	const UserRepository = AppDataSource.getRepository(User);
+	const CheckInRepository = AppDataSource.getRepository(CheckIn);
+	const foundUser = await UserRepository.findOneBy({ id: userId });
+
+	if (!foundUser) {
 		throw new AppError(404, "User not found!");
 	}
 
-	const newCheckIn: TCheckInReturn = {
-		id: uuidv4(),
-		createdAt: Date().toString(),
+	const newCheckIn = CheckInRepository.create({
+		user: foundUser,
 		...checkInData,
-	};
-
-	userDb.forEach((user) => {
-		if (user.id === userId) {
-			user.checkIns.push(newCheckIn);
-		}
 	});
+
+	await CheckInRepository.save(newCheckIn);
 
 	const returnCheckin = checkInReturnSchema.parse(newCheckIn);
 

@@ -29,7 +29,7 @@ export class User {
 	@Column({ length: 127 })
 	password!: string;
 
-	@OneToMany(() => CheckIn, (checkin) => checkin.id)
+	@OneToMany(() => CheckIn, (checkin) => checkin.user)
 	checkins!: CheckIn[];
 
 	@BeforeInsert()

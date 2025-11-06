@@ -2,17 +2,22 @@ import * as z from "zod";
 
 const checkInReturnSchema = z.object({
 	id: z.string(),
-	startHour: z.string().regex(/^([01]\d|2[0-3]):([0-5]\d)$/),
-	endHour: z.string().regex(/^([01]\d|2[0-3]):([0-5]\d)$/),
+	startTime: z.date(),
+	endTime: z.date(),
 	description: z.string(),
 	location: z.string(),
-	createdAt: z.string(),
+	createdAt: z.date(),
 });
 
-const checkInCreateSchema = checkInReturnSchema.omit({
-	id: true,
-	createdAt: true,
-});
+const checkInCreateSchema = checkInReturnSchema
+	.omit({
+		id: true,
+		createdAt: true,
+	})
+	.extend({
+		startTime: z.iso.datetime(),
+		endTime: z.iso.datetime(),
+	});
 
 const checkInListReturnSchema = checkInReturnSchema.array();
 

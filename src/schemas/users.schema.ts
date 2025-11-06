@@ -10,7 +10,7 @@ const userSchema = z.object({
 	lastName: z
 		.string("Last name is required")
 		.nonempty("Last name must not be empty"),
-	checkIns: z.array(checkInReturnSchema),
+	checkIns: z.array(checkInReturnSchema).optional(),
 	password: z
 		.string("password is required")
 		.nonempty("Password must not be empty"),
